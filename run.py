@@ -6,7 +6,7 @@ from counter import LineCounter
 # Open input video
 video = cv2.VideoCapture("input_video.mp4")
 
-# Create tracker and counter
+
 tracker = Tracker()
 counter = LineCounter()
 
@@ -32,13 +32,13 @@ while True:
     # Detect people
     detections = detect_people(frame)
 
-    # Track people
+    # Tracks people
     tracked_objects = tracker.update(detections)
 
-    # Update counter
+    
     up_count, down_count = counter.update(tracked_objects)
 
-    # Draw boxes and IDs
+    # this  Draws boxes and IDs
     for obj in tracked_objects:
 
         x1, y1, x2, y2, object_id = obj
@@ -61,10 +61,10 @@ while True:
             2
         )
 
-    # Draw counting line
+    # Draws counting line
     cv2.line(frame, (100, 600), (1000, 600), (0, 0, 255), 3)
 
-    # Show counts
+    
     cv2.putText(
         frame,
         f"Up -> Down : {down_count}",
@@ -91,11 +91,11 @@ while True:
     # Show video
     cv2.imshow("CrossCount", frame)
 
-    # Quit on Q
+    
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
-# Release resources
+
 video.release()
 out.release()
 cv2.destroyAllWindows()

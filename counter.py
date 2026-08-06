@@ -25,13 +25,13 @@ class LineCounter:
 
                 if object_id not in self.counted_ids:
 
-                    # Up -> Down
+                    
                     if previous_y < self.line_y and center_y >= self.line_y:
 
                         self.down_count += 1
                         self.counted_ids.add(object_id)
 
-                    # Down -> Up
+                    
                     elif previous_y > self.line_y and center_y <= self.line_y:
 
                         self.up_count += 1
