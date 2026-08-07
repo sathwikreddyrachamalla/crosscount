@@ -3,14 +3,13 @@ from detector import detect_people
 from tracker import Tracker
 from counter import LineCounter
 
-# Open input video
 video = cv2.VideoCapture("input_video.mp4")
 
 
 tracker = Tracker()
 counter = LineCounter()
 
-# Create output video
+
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 out = cv2.VideoWriter(
     "output_video.mp4",
@@ -29,16 +28,16 @@ while True:
     if not ret:
         break
 
-    # Detect people
+
     detections = detect_people(frame)
 
-    # Tracks people
+
     tracked_objects = tracker.update(detections)
 
     
     up_count, down_count = counter.update(tracked_objects)
 
-    # this  Draws boxes and IDs
+    
     for obj in tracked_objects:
 
         x1, y1, x2, y2, object_id = obj
@@ -61,7 +60,7 @@ while True:
             2
         )
 
-    # Draws counting line
+
     cv2.line(frame, (100, 600), (1000, 600), (0, 0, 255), 3)
 
     
@@ -85,10 +84,9 @@ while True:
         2
     )
 
-    # Save frame
     out.write(frame)
 
-    # Show video
+
     cv2.imshow("CrossCount", frame)
 
     
