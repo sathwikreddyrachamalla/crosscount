@@ -24,11 +24,11 @@ The project uses the YOLOv8 object detection model to detect people, a manually 
 
 ```
 crosscount/
-│── detector.py      # YOLO person detection
-│── tracker.py       # Object tracking
-│── counter.py       # Line crossing counter
-│── nms.py           # Manual Non-Maximum Suppression
-│── run.py           # Main program
+│── detector.py     
+│── tracker.py      
+│── counter.py      
+│── nms.py          
+│── run.py           
 │── input_video.mp4
 │── output_video.mp4
 │── yolov8n.pt
